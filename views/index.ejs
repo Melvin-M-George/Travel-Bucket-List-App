@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Bucket List</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Travel Bucket List</h1>
+
+    <% destinations.forEach(destination => { %>
+        <div>
+            <h2><%= destination.name %> <% if(destination.visited) { %> ✅ <% } %></h2>
+            <p><%= destination.description %></p>
+            <form action="/toggle/<%= destination._id %>" method="POST">
+                <button type="submit"><%= destination.visited ? "Mark as To Visit" : "Mark as Visited" %></button>
+            </form>
+            <form action="/delete/<%= destination._id %>" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+    <% }) %>
+    
+    <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Destination Name" required>
+        <input type="text" name="description" placeholder="Short Description">
+        <button type="submit">Add Destination</button>
+    </form>
+    
+</body>
+</html>
