@@ -1,0 +1,1 @@
+# This is a simple bucket list app made by using node.js, express.js and mongoDB.
