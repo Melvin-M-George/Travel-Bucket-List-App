@@ -1,91 +1,137 @@
-/* styles.css */
+:root {
+    --primary-color: #424874;
+    --secondary-color: #424874;
+    --danger-color: #f04242;
+    --background-color: #f5f6fa;
+    --card-background: #ffffff;
+    --text-color: #2c3e50;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f8ff;
-    margin: 0;
-    padding: 20px;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 h1 {
-    color: #0077b6;
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-form {
-    margin: 10px 0;
-}
-
-input[type="text"] {
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    width: 200px;
-}
-
-button {
-    padding: 10px 15px;
-    background-color: #0077b6;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #005f8a;
-}
-
-button:focus {
-    outline: none;
-    box-shadow: 0 0 5px #0077b6;
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 600;
 }
 
 div {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 10px 0;
-    width: 300px;
-    text-align: center;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease;
+}
+
+div:hover {
+    transform: translateY(-2px);
 }
 
 h2 {
-    margin: 0 0 10px;
-    color: #023e8a;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 p {
-    color: #555;
-    margin: 5px 0 15px;
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.5;
 }
 
-/* Add subtle hover effect */
-div:hover {
-    transform: translateY(-5px);
-    transition: transform 0.2s ease-in-out;
+form {
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+form[action^="/delete"] button {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+form[action^="/toggle"] button {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* Add destination form styles */
+form[action="/add"] {
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+input {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex: 1;
+    min-width: 200px;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
 /* Responsive design */
 @media (max-width: 600px) {
     body {
-        padding: 10px;
+        padding: 1rem;
     }
-
+    
     div {
-        width: 100%;
+        padding: 1rem;
     }
-
-    input[type="text"] {
-        width: calc(100% - 22px);
+    
+    form[action="/add"] {
+        flex-direction: column;
+    }
+    
+    input {
+        width: 100%;
     }
 }

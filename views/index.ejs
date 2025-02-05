@@ -9,6 +9,12 @@
 <body>
     <h1>Travel Bucket List</h1>
 
+    <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Destination Name" required>
+        <input type="text" name="description" placeholder="Short Description">
+        <button type="submit">Add Destination</button>
+    </form><br>
+
     <% destinations.forEach(destination => { %>
         <div>
             <h2><%= destination.name %> <% if(destination.visited) { %> ✅ <% } %></h2>
@@ -22,11 +28,7 @@
         </div>
     <% }) %>
     
-    <form action="/add" method="POST">
-        <input type="text" name="name" placeholder="Destination Name" required>
-        <input type="text" name="description" placeholder="Short Description">
-        <button type="submit">Add Destination</button>
-    </form>
+    
     
 </body>
 </html>
